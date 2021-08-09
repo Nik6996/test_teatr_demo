@@ -35,70 +35,99 @@ window.addEventListener('scroll', function () {
 //============================SLIDER=============================
 
 
+new Swiper('.slider-content__body', {
+
+	slidesPerView: 4,
+	loop: true,
+
+});
 
 
-if (document.documentElement.clientWidth <= 1920) {
-	let swipeContainer = document.querySelector('.slider-content');
 
-	swipeContainer.addEventListener('touchstart', touchStart, false);
-	swipeContainer.addEventListener('touchmove', touchMove, false);
+new Swiper('.partner__body', {
 
-	let x1 = null;
-	let y1 = null;
-
-	function touchStart(event) {
-		const firstTouch = event.touches[0];
-		x1 = firstTouch.clientX;
-		y1 = firstTouch.clientY;
-		rollSlider();
-	}
-	function touchMove(event) {
-		if (!x1 || !y1) {
-			return false;
-		}
-		let x2 = event.touches[0].clientX;
-		let xDiff = x2 - x1;
-		if (xDiff < 0) {
-			count++;
-			rollSlider();
-
-		}
-		if (xDiff > 0) {
-			count--;
-			rollSlider();
-			if (count <= 0) {
-				count = sumSlide
-			}
-		}
-		if (count > sumSlide - 2) {
-			count = -1;
-		}
-		console.log(count);
-
-		x1 = null;
-		y1 = null;
-	}
+	breakpoints: {
+		500: {
+			slidesPerView: 2,
+		},
+		700: {
+			slidesPerView: 3,
+		},
+		992: {
+			slidesPerView: 4,
+		},
+	},
 
 
-	const slide = document.querySelectorAll('cart-slider');
-	const sliderLine = document.querySelector('.content-slider__slider-line');
-	let count = 0;
-	let width;
-	let sumSlide = document.getElementsByClassName('cart-slider').length;
-	console.log(sumSlide);
+	loop: true,
 
-	function init() {
-		width = document.querySelector('.cart-slider').offsetWidth;
-		sliderLine.style.width = width * slide.length + 'px';
-
-	}
-	window.addEventListener('resize', init);
+});
 
 
-	function rollSlider() {
-		sliderLine.style.transform = 'translate(-' + count * width + 'px) ';
-		window.addEventListener('resize', init);
-		init();
-	}
 
-}
+
+// if (document.documentElement.clientWidth <= 1920) {
+// 	let swipeContainer = document.querySelector('.slider-content');
+
+// 	swipeContainer.addEventListener('touchstart', touchStart, false);
+// 	swipeContainer.addEventListener('touchmove', touchMove, false);
+
+// 	let x1 = null;
+// 	let y1 = null;
+
+// 	function touchStart(event) {
+// 		const firstTouch = event.touches[0];
+// 		x1 = firstTouch.clientX;
+// 		y1 = firstTouch.clientY;
+// 		rollSlider();
+// 	}
+// 	function touchMove(event) {
+// 		if (!x1 || !y1) {
+// 			return false;
+// 		}
+// 		let x2 = event.touches[0].clientX;
+// 		let xDiff = x2 - x1;
+// 		if (xDiff < 0) {
+// 			count++;
+// 			rollSlider();
+
+// 		}
+// 		if (xDiff > 0) {
+// 			count--;
+// 			rollSlider();
+// 			if (count <= 0) {
+// 				count = sumSlide
+// 			}
+// 		}
+// 		if (count > sumSlide - 2) {
+// 			count = -1;
+// 		}
+// 		console.log(count);
+
+// 		x1 = null;
+// 		y1 = null;
+// 	}
+
+
+// 	const slide = document.querySelectorAll('cart-slider');
+// 	const sliderLine = document.querySelector('.content-slider__slider-line');
+// 	let count = 0;
+// 	let width;
+// 	let sumSlide = document.getElementsByClassName('cart-slider').length;
+// 	console.log(sumSlide);
+
+// 	function init() {
+// 		width = document.querySelector('.cart-slider').offsetWidth;
+// 		sliderLine.style.width = width * slide.length + 'px';
+
+// 	}
+// 	window.addEventListener('resize', init);
+
+
+// 	function rollSlider() {
+// 		sliderLine.style.transform = 'translate(-' + count * width + 'px) ';
+// 		window.addEventListener('resize', init);
+// 		init();
+// 	}
+
+// }
